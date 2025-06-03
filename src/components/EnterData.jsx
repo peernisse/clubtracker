@@ -30,11 +30,11 @@ function EnterData() {
         return(
             <div className="enter-data">
                 <h2>Enter Data</h2>
-                <h4>Select holes format</h4>
+                <h3 className="title-main">Select holes format</h3>
                 <Toggle options={holesOptions} onClick={handleHolesChange}/>
-                <h4>Enter score date</h4>
+                <h3 className="title-main">Enter score date</h3>
                 <DatePicker className="input-widgets" selected={startDate} onChange={(date) => setStartDate(date)} />
-                <h4>Enter your score</h4>
+                <h3 className="title-main">Enter your score</h3>
                 <input 
                     id="score-input" 
                     type="number" 

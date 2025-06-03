@@ -64,16 +64,19 @@ function Course() {
        
     return (
         <div className="course">
-            <h4>Select your gender</h4>
+            <h3 className="title-main">Select your gender</h3>
+            <p className="subtitle-main"></p>
             <Toggle options={genderOptions} onClick={handleGenderChange}/>
             {/*<p>Selected gender: {selectedGender}</p>*/}
-            <h4>Select your state</h4>
-            <Select options={state_names[[1]]} onChange={handleSelectChange} /> {/* Using Select component to display state names */}
+            <h3 className="title-main">Select your state</h3>
+            <p className="subtitle-main"></p>
+            <Select options={state_names[1]} onChange={handleSelectChange} /> {/* Using Select component to display state names */}
             {/*<p>Selected state: {selectedState}</p>*/}
 
             { selectedState && courseOptions.length > 0 && (
                 <>
-                    <h4>Select a course</h4>
+                    <h3 className="title-main">Select a course</h3>
+                    <p className="subtitle-main"></p>
                     <Select options={courseOptions} onChange={handleCourseChange} /> {/* Using Select component to display course options */}
                     {/*<p>Selected course: {selectedCourse}</p>*/}
                 </>
@@ -81,7 +84,8 @@ function Course() {
 
             { selectedCourse && teeOptions.length > 0 && (
                 <>
-                    <h4>Select your tee box</h4>
+                    <h3 className="title-main">Select your tee box</h3>
+                    <p className="subtitle-main"></p>
                     <Select options={teeOptions} onChange={handleTeesChange} /> {/* Using Select component to display tee options */}
                     {/*<p>Teebox Name: {selectedTees}</p>*/}
                 </>
@@ -89,14 +93,15 @@ function Course() {
 
             { selectedTees && selectedState && selectedCourse && (
                 <>
-                    <h4>Tee box details</h4>
+                    <h3 className="title-main">Tee box details</h3>
+                    <p className="subtitle-main">Course info for selected tee box:</p>
                     <div className="tee-details">
                         {/*<p>Tee Name: {selectedTees}</p>*/}
-                        <p className="tee-item">Course Rating: {us_course_data[selectedState][selectedCourse]['tee_info'][selectedGender][selectedTees][0]['tee_tee_length']}</p>
-                        <p className="tee-item">Slope Rating: {us_course_data[selectedState][selectedCourse]['tee_info'][selectedGender][selectedTees][0]['tee_par']}</p>
-                        <p className="tee-item">Slope Rating: {us_course_data[selectedState][selectedCourse]['tee_info'][selectedGender][selectedTees][0]['tee_course_rating']}</p>
-                        <p className="tee-item">Slope Rating: {us_course_data[selectedState][selectedCourse]['tee_info'][selectedGender][selectedTees][0]['tee_slope_rating']}</p>
-                        <p className="tee-item">Slope Rating: {us_course_data[selectedState][selectedCourse]['tee_info'][selectedGender][selectedTees][0]['tee_bogey_rating']}</p>
+                        <p className="tee-item">Length (yds): {us_course_data[selectedState][selectedCourse]['tee_info'][selectedGender][selectedTees][0]['tee_length']}</p>
+                        <p className="tee-item">Par: {us_course_data[selectedState][selectedCourse]['tee_info'][selectedGender][selectedTees][0]['tee_par']}</p>
+                        <p className="tee-item">Course rating: {us_course_data[selectedState][selectedCourse]['tee_info'][selectedGender][selectedTees][0]['tee_course_rating']}</p>
+                        <p className="tee-item">Slope rating: {us_course_data[selectedState][selectedCourse]['tee_info'][selectedGender][selectedTees][0]['tee_slope_rating']}</p>
+                        <p className="tee-item">Bogey rating: {us_course_data[selectedState][selectedCourse]['tee_info'][selectedGender][selectedTees][0]['tee_bogey_rating']}</p>
                     </div>
                 </>
             )}
@@ -113,4 +118,4 @@ function Course() {
 }
 
 export default Course;
-// This component displays a course with its title, description, duration, and price.   
+// This component displays the primary interface to select course, gender, tee box for determining handicap from the entered score.

@@ -17,7 +17,9 @@ const state_abvs = states[['states']].map(state => state.abbreviation);
 const indices = states_available.map(abbr => state_abvs.indexOf(abbr));
 
 console.log(indices); // Log the indices of the state abbreviations in the state_abvs array
-
+//console.log(us_course_data['US']['Pebble Beach Golf Links']); // Example to check if data is loaded correctly
+console.log(us_course_data['UT']['Wolf Creek GC - Wolf Creek GC']['tee_info']['M']['Blue'][0]); // Example to check if data is loaded correctly
+//console.log(us_course_data[49][0][1]);
 
 
 

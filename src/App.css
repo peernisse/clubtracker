@@ -58,6 +58,7 @@
 
 .subtitle-main {
   margin-top: 0;
+  font-style:italic;
 }
 /* GENDER TOGGLE */
 
@@ -125,21 +126,22 @@
 .tee-details {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   margin-top: 1rem;
   max-width: 99%;
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
+  flex-wrap: wrap;
 }
 
 .tee-item {
-  min-width: 33%;
-    background-color: darkcyan;
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    margin-right: 0.5rem;
-    font-size: 0.9rem;
-    max-height: 18px;
+  min-width: 10%;
+  background-color: darkcyan;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 1rem;
+  margin-right: 0.5rem;
+  font-size: 0.9rem;
+  max-height: 20px;
 }
 
 /* ENTER DATA */

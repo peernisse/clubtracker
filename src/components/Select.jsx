@@ -15,7 +15,7 @@ function Select({ options, onChange }) {
     return (
         <div className="select-component">
             <label htmlFor="options"></label>
-            <select className="input-widgets" value={selectedOption} onChange={handleSelectChange}>
+            <select className="input-widgets" value={selectedOption} onChange={handleSelectChange} size="5">
                 <option value="">{selectedOption}</option>
                 {options && options.map((option) => (
                     <option key={option} value={option}>

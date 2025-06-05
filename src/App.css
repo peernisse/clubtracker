@@ -41,7 +41,7 @@
   color: #888;
 }
 
-/* SELECT COMPONENTS AND ALL INPUTS */
+/* SELECT COMPONENTS AND ALL INPUTS 
 
 .select-component {
   max-height: 150px;
@@ -53,10 +53,11 @@ select {
   height: auto;
 }
 
+*/
+
 .input-widgets {
     min-height: 2rem;
     font-size: large;
-    color: #fff;
     border-radius: 0.5rem;
     border: 1px solid #ed7000;
     text-align: center;

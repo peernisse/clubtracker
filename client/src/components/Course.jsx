@@ -3,10 +3,15 @@ import Select from './Select.jsx'; // Importing Select component for potential u
 import Toggle from './Toggle.jsx'; // Importing Toggle component
 import states from 'states-us'; // Importing states-us for potential use in the future
 import EnterData from './EnterData.jsx'; // Importing EnterData component for data entry functionality
-import us_course_data from '../data/us_course_data.json'; // Importing course data from a JSON file      
+//import us_course_data from '../data/us_course_data.json'; // Importing course data from a JSON file      
 
-function Course() {
+function Course({ data }) {
     
+    // Rename Lookup data
+    const us_course_data = data;
+    //console.log(data);
+    console.log(us_course_data);
+
     // Initial states for the inputs
     const [selectedGender, setSelectedGender] = useState('M'); // State for selected
     const [selectedState, setSelectedState] = useState('');

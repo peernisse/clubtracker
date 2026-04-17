@@ -1,4 +1,5 @@
 // BACKEND API FOR CLUBTRACKER
+// run the API with node index.js in the server directory
 
 import express from 'express';
 import cors from 'cors';

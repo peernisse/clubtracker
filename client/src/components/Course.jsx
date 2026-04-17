@@ -1,23 +1,38 @@
-import { useState } from 'react';
-import Select from './Select.jsx'; // Importing Select component for potential use in the future                
-import Toggle from './Toggle.jsx'; // Importing Toggle component
-import states from 'states-us'; // Importing states-us for potential use in the future
-import EnterData from './EnterData.jsx'; // Importing EnterData component for data entry functionality
-//import us_course_data from '../data/us_course_data.json'; // Importing course data from a JSON file      
+import { useEffect, useState } from 'react'
+import Select from './Select.jsx'
+import Toggle from './Toggle.jsx'
+import states from 'states-us'
+import EnterData from './EnterData.jsx'   
 
 function Course({ data }) {
-    
-    // Rename Lookup data
-    const us_course_data = data;
-    //console.log(data);
-    console.log(us_course_data);
-
     // Initial states for the inputs
     const [selectedGender, setSelectedGender] = useState('M'); // State for selected
     const [selectedState, setSelectedState] = useState('');
     const [selectedCourse, setSelectedCourse] = useState('');
-    const [selectedTees, setSelectedTees] = useState(''); // State for selected tees    
+    const [selectedTees, setSelectedTees] = useState(''); // State for selected tees   
     
+    useEffect(() => {
+        if(!data) return; // Guard clause to prevent logging when data is not available
+        console.log('Course received data:', data)
+    }, [data])
+
+    if (!data) return <div>Loading course data…</div>
+
+    // keep existing code that expects `us_course_data`
+    const us_course_data = data
+
+    // Get course names for the selected state
+
+    const courseOptions = selectedState && us_course_data[selectedState]
+        ? Object.keys(us_course_data[selectedState])
+        : [];
+
+    // Get tee names for the selected course
+
+    const teeOptions = selectedCourse && selectedState && us_course_data[selectedState][selectedCourse]
+        ? Object.keys(us_course_data[selectedState][selectedCourse]['tee_info'][selectedGender])
+        : [];
+   
     // Functions to handle inputs state selection changes
 
     const handleGenderChange = (selection) => {
@@ -26,6 +41,7 @@ function Course({ data }) {
     };
 
     const handleSelectChange = (option) => {
+        console.log('Selected state is:' + option); // Logging the selected option
         setSelectedState(option);
         setSelectedCourse('');           
     };
@@ -47,26 +63,10 @@ function Course({ data }) {
 
     // Extracting state names and abbreviations from the states data
 
-    const state_name = states.map(state => state.name);
-    const state_abv = states.map(state => state.abbreviation);
+    const state_name = states.map((s) => s.name)
+    const state_abv = states.map((s) => s.abbreviation)
+    const state_names = [state_name, state_abv]
 
-    const states_available = us_course_data ? Object.keys(us_course_data) : [];
-    
-
-    const state_names = [state_name, state_abv];
-
-    // Get course names for the selected state
-
-    const courseOptions = selectedState && us_course_data[selectedState]
-        ? Object.keys(us_course_data[selectedState])
-        : [];
-
-    // Get tee names for the selected course
-
-    const teeOptions = selectedCourse && selectedState && us_course_data[selectedState][selectedCourse]
-        ? Object.keys(us_course_data[selectedState][selectedCourse]['tee_info'][selectedGender])
-        : [];
-       
     return (
         <div className="course">
             <h3 className="title-main">Select your gender</h3>
